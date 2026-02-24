@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eFootball Fan Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        header img {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            animation: rainbow 3s infinite linear;
+        }
+        h1 { font-size: 2.5em; color: #ffdd00; text-shadow: 2px 2px #000; }
+        h2 { font-size: 2em; margin-top: 40px; color: #ffdd00; }
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            20% { color: #ff7f00; }
+            40% { color: #ffff00; }
+            60% { color: #00ff00; }
+            80% { color: #0000ff; }
+            100% { color: #8b00ff; }
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%;
+        }
+        th, td {
+            border: 1px solid #fff;
+            padding: 8px 12px;
+        }
+        th { background-color: #ffdd00; color: #000; }
+        td { text-align: center; }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            margin: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #32cd32;
+            color: white;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.1); }
+
+        .playstyle {
+            margin: 10px auto;
+            padding: 15px;
+            border: 2px solid #ffdd00;
+            border-radius: 10px;
+            width: 80%;
+            text-align: left;
+            background-color: rgba(255, 221, 0, 0.1);
+        }
+
+        #tip, #score {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffdd00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/en/8/89/Efootball_2022_logo.png" alt="eFootball Logo">
+    </header>
+
+    <h1>eFootball Fan Portal</h1>
+
+    <!-- Division Stats -->
+    <section>
+        <h2>Division Stats</h2>
+        <table>
+            <tr>
+                <th>Team</th>
+                <th>Matches</th>
+                <th>Wins</th>
+                <th>Draws</th>
+                <th>Losses</th>
+                <th>Points</th>
+            </tr>
+            <tr><td>Barcelona</td><td>10</td><td>7</td><td>2</td><td>1</td><td>23</td></tr>
+            <tr><td>Real Madrid</td><td>10</td><td>6</td><td>3</td><td>1</td><td>21</td></tr>
+            <tr><td>Manchester United</td><td>10</td><td>5</td><td>2</td><td>3</td><td>17</td></tr>
+            <tr><td>Liverpool</td><td>10</td><td>4</td><td>3</td><td>3</td><td>15</td></tr>
+        </table>
+    </section>
+
+    <!-- Player Stats -->
+    <section>
+        <h2>Top Players</h2>
+        <table>
+            <tr>
+                <th>Player</th>
+                <th>Team</th>
+                <th>Position</th>
+                <th>Goals</th>
+                <th>Assists</th>
+                <th>Matches</th>
+            </tr>
+            <tr><td>Lionel Messi</td><td>Barcelona</td><td>Forward</td><td>5</td><td>3</td><td>10</td></tr>
+            <tr><td>Karim Benzema</td><td>Real Madrid</td><td>Forward</td><td>4</td><td>2</td><td>10</td></tr>
+            <tr><td>Mohamed Salah</td><td>Liverpool</td><td>Forward</td><td>3</td><td>4</td><td>10</td></tr>
+            <tr><td>Bruno Fernandes</td><td>Manchester United</td><td>Midfielder</td><td>2</td><td>5</td><td>10</td></tr>
+        </table>
+    </section>
+
+    <!-- Team Playstyles -->
+    <section>
+        <h2>Team Playstyles</h2>
+        <div class="playstyle">
+            <strong>Barcelona:</strong> Possession-based football, quick short passes, attacking through the wings.
+        </div>
+        <div class="playstyle">
+            <strong>Real Madrid:</strong> Counter-attack style, fast transitions, strong forward pressing.
+        </div>
+        <div class="playstyle">
+            <strong>Manchester United:</strong> Balanced approach, strong midfield control, aggressive pressing.
+        </div>
+        <div class="playstyle">
+            <strong>Liverpool:</strong> High pressing, fast-paced wing attacks, aggressive forward runs.
+        </div>
+    </section>
+
+    <!-- Random Player Tip -->
+    <section>
+        <h2>Random Player Tip</h2>
+        <button onclick="showTip()">Get Tip</button>
+        <div id="tip"></div>
+    </section>
+
+    <!-- Random Match Result -->
+    <section>
+        <h2>Random Match Result</h2>
+        <button onclick="showScore()">Get Result</button>
+        <div id="score"></div>
+    </section>
+
+    <script>
+        function showTip() {
+            const tips = [
+                "Focus on short passes to keep possession.",
+                "Use the right stick for skill moves.",
+                "Defend patiently, don’t rush tackles.",
+                "Set formations based on opponent strategy.",
+                "Switch players manually for better defense.",
+                "Time your shots for maximum accuracy."
+            ];
+            const random = tips[Math.floor(Math.random() * tips.length)];
+            document.getElementById('tip').textContent = random;
+        }
+
+        function showScore() {
+            const teams = ["Barcelona", "Real Madrid", "Manchester United", "Liverpool"];
+            let team1 = teams[Math.floor(Math.random() * teams.length)];
+            let team2;
+            do { team2 = teams[Math.floor(Math.random() * teams.length)]; } while(team1 === team2);
+            const score1 = Math.floor(Math.random() * 5);
+            const score2 = Math.floor(Math.random() * 5);
+            document.getElementById('score').textContent = `${team1} ${score1} - ${score2} ${team2}`;
+        }
+    </script>
+</body>
+</html>
